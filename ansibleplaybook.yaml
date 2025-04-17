@@ -1,7 +1,7 @@
 ---
 - name: Deploy Docker container locally
   hosts: local
-  become: true
+  become: false
 
   tasks:
     - name: Pull latest Docker image
