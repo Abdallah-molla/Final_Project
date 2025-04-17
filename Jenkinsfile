@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install -DskipTests'
+                sh 'mvn clean package -DskipTests'
                 sh 'ls -al target/'  // Verify the JAR file is in the target folder
             }
         }
