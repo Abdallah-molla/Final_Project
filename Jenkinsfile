@@ -54,16 +54,7 @@ pipeline {
                  '''
              }
          }
-        stage('Prometheus Monitoring') {
-            steps {
-                // Ensure Prometheus is scraping the metrics endpoint
-                sh 'curl -s http://localhost:5000/metrics'
               
-            }
-        }
-    
-
-
 
     }
 }
