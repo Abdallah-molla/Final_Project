@@ -16,14 +16,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean install -Dcargo.servlet.port=8081 -DskipTests'
+                sh 'mvn clean install -DskipTests'
                 sh 'ls -al target/'  // Verify the JAR file is in the target folder
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test -Dcargo.servlet.port=8081'
+                sh 'mvn test'
             }
         }
 
@@ -58,8 +58,7 @@ pipeline {
             steps {
                 // Ensure Prometheus is scraping the metrics endpoint
                 sh 'curl -s http://localhost:5000/metrics'
-                // Alternatively, you can test the Prometheus scraping manually
-                sh 'curl -s http://localhost:5000/api/v1/targets'
+              
             }
         }
     
