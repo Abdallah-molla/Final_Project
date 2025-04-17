@@ -47,6 +47,25 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+           steps {
+             sh '''
+                  ansible-playbook -i inventory ansibleplaybook.yml
+                 '''
+             }
+         }
+        stage('Prometheus Monitoring') {
+            steps {
+                // Ensure Prometheus is scraping the metrics endpoint
+                sh 'curl -s http://localhost:5000/metrics'
+                // Alternatively, you can test the Prometheus scraping manually
+                sh 'curl -s http://localhost:5000/api/v1/targets'
+            }
+        }
+    
+
+
+
     }
 }
 
