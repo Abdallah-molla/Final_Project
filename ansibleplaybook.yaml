@@ -3,11 +3,11 @@
   hosts: localhost
   become: true  
   tasks:
-    - name: Ensure Docker is installed
-      apt:
-        name: docker.io
-        state: present
-          #become: yes
+    # - name: Ensure Docker is installed
+    # apt:
+    #   name: docker.io
+    #   state: present
+    #     #become: yes
 
     - name: Ensure Docker service is running
       service:
