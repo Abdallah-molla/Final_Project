@@ -1,61 +1,55 @@
 pipeline {
     agent any
-    tools {
-        jdk 'java21'
-    }
     environment {
-        JAVA_HOME = "${tool 'java21'}"
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub_cred')
+        DOCKER_IMAGE = "molla2011/jpetstore"
     }
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/abdallahelmalawany/Java_DevOps_CICD_project.git'
             }
         }
-
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
-                sh 'ls -al target/'  // Verify the JAR file is in the target folder
+                sh './mvnw clean package -DskipTests'
             }
         }
-
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh './mvnw test'
             }
         }
-
-        stage('Docker Build') {
+        stage('Build Docker Image') {
             steps {
-                sh "docker build -t 'molla2011/finalproject:latest' ."
-            }
-        }
-
-        stage('Docker Push') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub_cred',
-                    usernameVariable: 'DOCKER_USER',
-                    passwordVariable: 'DOCKER_PASS'
-                )]) {
-                    sh '''
-                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push molla2011/finalproject:latest
-                    '''
+                script {
+                    docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
                 }
             }
         }
-        stage('Deploy') {
-           steps {
-             sh '''
-                  ansible-playbook -i inventory ansibleplaybook.yaml
-                 '''
-             }
-         }
-              
-
+        stage('Push to DockerHub') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_cred') {
+                        docker.image("${DOCKER_IMAGE}:${env.BUILD_NUMBER}").push()
+                        docker.image("${DOCKER_IMAGE}:${env.BUILD_NUMBER}").push('latest')
+                    }
+                }
+            }
+        }
+        stage('Deploy with Ansible') {
+            steps {
+                ansiblePlaybook(
+                    playbook: 'ansibleplaybook.yaml',
+                    inventory: 'inventory',
+                    extras: "-e docker_image=${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
+                )
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
     }
 }
-

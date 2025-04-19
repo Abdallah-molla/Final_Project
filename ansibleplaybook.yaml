@@ -1,18 +1,45 @@
 ---
-- name: Deploy Docker container locally
-  hosts: local
-  become: false
-
+---
+- name: Deploy JPetStore Application
+  hosts: localhost
   tasks:
-    - name: Pull latest Docker image
-      shell: docker pull molla2011/finalproject:latest
+    - name: Ensure Docker is installed
+      apt:
+        name: docker.io
+        state: present
+      become: yes
 
-    - name: Stop existing container (if any)
-      shell: docker stop finalproject || true
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      become: yes
 
-    - name: Remove existing container (if any)
-      shell: docker rm finalproject || true
+    - name: Stop and remove existing container
+      docker_container:
+        name: jpetstore
+        state: absent
+      ignore_errors: yes
 
-    - name: Run Docker container
-      shell: docker run -d --name finalproject -p 5000:5000 molla2011/finalproject:latest
+    - name: Run JPetStore container
+      docker_container:
+        name: jpetstore
+        image: "{{ docker_image }}"
+        state: started
+        ports:
+          - "8080:8080"
+        restart_policy: always
 
+    - name: Install Prometheus Node Exporter
+      apt:
+        name: prometheus-node-exporter
+        state: present
+      become: yes
+
+    - name: Ensure Prometheus Node Exporter is running
+      service:
+        name: prometheus-node-exporter
+        state: started
+        enabled: yes
+      become: yes
