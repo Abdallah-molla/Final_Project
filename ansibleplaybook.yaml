@@ -1,6 +1,7 @@
 ---
 - name: Deploy JPetStore Application
   hosts: localhost
+  become: true  
   tasks:
     - name: Ensure Docker is installed
       apt:
