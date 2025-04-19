@@ -1,5 +1,8 @@
 pipeline {
     agent any
+     tools {
+        jdk 'java21'
+     }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub_cred')
         DOCKER_IMAGE = "molla2011/jpetstore"
