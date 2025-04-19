@@ -1,5 +1,4 @@
 ---
----
 - name: Deploy JPetStore Application
   hosts: localhost
   tasks:
