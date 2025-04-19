@@ -6,14 +6,14 @@
       apt:
         name: docker.io
         state: present
-      become: yes
+          #become: yes
 
     - name: Ensure Docker service is running
       service:
         name: docker
         state: started
         enabled: yes
-      become: yes
+          #become: yes
 
     - name: Stop and remove existing container
       docker_container:
@@ -34,11 +34,11 @@
       apt:
         name: prometheus-node-exporter
         state: present
-      become: yes
+          #become: yes
 
     - name: Ensure Prometheus Node Exporter is running
       service:
         name: prometheus-node-exporter
         state: started
         enabled: yes
-      become: yes
+          #become: yes
