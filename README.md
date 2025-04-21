@@ -1,7 +1,8 @@
 ## 📜 Overview
 
 This project demonstrates a comprehensive DevOps pipeline for a Java web application. The pipeline automates the build, test, and deployment processes using Jenkins, Docker, and Ansible. The application is containerized and deployed on a virtual machine, accessible via http://localhost:8080/jpetstore.
-![Uploading Untitled Diagram.drawio.png…]()
+![Untitled Diagram drawio](https://github.com/user-attachments/assets/42694951-c75a-4489-aeca-57acb7fb2edd)
+
 
 ## ⚙️ Tools & Technologies
 
