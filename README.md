@@ -8,7 +8,8 @@ This is a simple Java web app that needs to have an automated CI/CD using the De
 
 ## 📌 Setup & Execution Steps:
 Follow these steps to set up the environment and run the CI/CD pipeline:
- 🖥️ 1. Create a Virtual Machine
+ 
+ #🖥️ 1. Create a Virtual Machine
 
    Launch a VM with Ubuntu 22.04.
 
@@ -17,14 +18,15 @@ Follow these steps to set up the environment and run the CI/CD pipeline:
     sudo apt update
     sudo apt install docker.io ansible -y
  
-⚙️ 2. Install & Configure Jenkins
+
+#⚙️ 2. Install & Configure Jenkins
 
    Install Jenkins on the VM.
 
    Change Jenkins default port to 9090 by editing the config file:
 
     sudo nano /etc/default/jenkins
-# Change HTTP_PORT=8080 → HTTP_PORT=9090
+  Change HTTP_PORT=8080 → HTTP_PORT=9090
 
   Restart Jenkins:
 
@@ -33,19 +35,22 @@ Follow these steps to set up the environment and run the CI/CD pipeline:
    Access Jenkins at http://<VM-IP>:9090.
 
    Complete initial setup and install recommended plugins.
-🔧 3. Jenkins Pipeline Configuration
+
+#🔧 3. Jenkins Pipeline Configuration
 
    Create a new Pipeline project in Jenkins.
 
    Under Pipeline → Definition, select "Pipeline script from SCM".
 
    Set the GitHub Repository URL of this project.
-🔐 4. DockerHub Credentials
+
+#🔐 4. DockerHub Credentials
 
    In Jenkins, navigate to Manage Jenkins → Credentials.
 
    Add your DockerHub username and password as a new credential.
-🧩 5. Install Required Jenkins Plugins
+
+#🧩 5. Install Required Jenkins Plugins
 
 Make sure the following plugins are installed:
 
@@ -54,14 +59,15 @@ Make sure the following plugins are installed:
    Ansible
 
    Git
-📈 6. Install & Configure Prometheus
+
+#📈 6. Install & Configure Prometheus
 
    Install Prometheus on the VM.
 
    Change its default port to 9091 by editing the systemd service file:
 
     sudo nano /etc/systemd/system/prometheus.service
-# Modify --web.listen-address=:9091
+   Modify --web.listen-address=:9091
 
    Add targets to prometheus.yml:
 
@@ -69,7 +75,8 @@ Make sure the following plugins are installed:
      - targets: ['<VM-IP>:8080', 'localhost:9091']
 
    Restart Prometheus and access it at: http://localhost:9091
-🚀 7. Run the CI/CD Pipeline
+
+#🚀 7. Run the CI/CD Pipeline
 
    Trigger the Jenkins pipeline.
 
@@ -86,7 +93,8 @@ Make sure the following plugins are installed:
    Application is deployed in a container on the VM
 
    Prometheus monitors the application
-    🌐 8. Access the Application
+    
+  #🌐 8. Access the Application
 
    Visit the deployed application at:
      http://<VM-IP>:8080  
