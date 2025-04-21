@@ -1,8 +1,24 @@
-###  Java DevOps CI/CD project.
+📜 Overview
 
-## Description 
+This project demonstrates a comprehensive DevOps pipeline for a Java web application. The pipeline automates the build, test, and deployment processes using Jenkins, Docker, and Ansible. The application is containerized and deployed on a virtual machine, accessible via http://localhost:8080/jpetstore.
+⚙️ Tools & Technologies
 
-This is a simple Java web app that needs to have an automated CI/CD using the DevOps toolset. The Application shall run as a container on the same VM on port 8080. Test the application by visiting this URL: http://localhost:8080/jpetstore.
+   Version Control: Git, GitHub
+
+   Build Automation: Maven
+
+   Containerization: Docker
+
+   Continuous Integration/Continuous Deployment: Jenkins
+
+   Configuration Management: Ansible
+
+   Infrastructure as Code: Terraform
+   
+   Cloud Provider: AWS (Amazon Web Services)
+
+   Monitoring & Logging: Prometheus
+
 
 
 
