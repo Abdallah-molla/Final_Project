@@ -15,10 +15,8 @@ This project demonstrates a comprehensive DevOps pipeline for a Java web applica
    Continuous Integration/Continuous Deployment: Jenkins
 
    Configuration Management: Ansible
-
-   Infrastructure as Code: Terraform
    
-   Cloud Provider: AWS (Amazon Web Services)
+   VMWare Vsphere
 
    Monitoring & Logging: Prometheus
 
