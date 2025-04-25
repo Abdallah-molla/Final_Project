@@ -6,5 +6,4 @@
 *.iml
 /build
 *.releaseBackup
-*.properties
 .env
