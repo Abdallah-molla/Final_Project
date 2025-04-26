@@ -129,7 +129,15 @@ Make sure JDK installation set in Jenkins Tools
 ![Screenshot (18)](https://github.com/user-attachments/assets/d4314b7c-1830-4ea4-81cc-27b0ae7f2ba3)
 
    Prometheus monitors the application
-![Screenshot (12)](https://github.com/user-attachments/assets/1af78f29-6b48-4717-b9a3-50760e63b758)
+   
+    docker exec -it jpetstore /bin/bash
+    wget https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz 
+    tar -xvzf node_exporter-1.9.1.linux-amd64.tar.gz
+    mv node_exporter-1.9.1.linux-amd64/node_exporter /usr/local/bin/
+    /usr/local/bin/node_exporter &
+    http://<your-vm-ip>:9100/metrics
+
+![Screenshot (1700)](https://github.com/user-attachments/assets/68761097-3bd8-4f94-bac2-123690e3919a)
     
 ##  🌐 8. Access the Application
 
