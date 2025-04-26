@@ -103,7 +103,7 @@ Make sure JDK installation set in Jenkins Tools
    Add targets to prometheus.yml:
 
     static_configs:
-     - targets: ['<VM-IP>:9100', 'localhost:9091']
+     - targets: ['192.168.3.60:9100', 'localhost:9091']
 ![Screenshot (1701)](https://github.com/user-attachments/assets/08f35584-7bb4-4ad7-910f-2ac53fb99664)
 
    Restart Prometheus and access it at: http://localhost:9091
@@ -135,7 +135,7 @@ Make sure JDK installation set in Jenkins Tools
     tar -xvzf node_exporter-1.9.1.linux-amd64.tar.gz
     mv node_exporter-1.9.1.linux-amd64/node_exporter /usr/local/bin/
     /usr/local/bin/node_exporter &
-    http://<your-vm-ip>:9100/metrics
+    http://192.168.3.60:9100/metrics
 
 ![Screenshot (1700)](https://github.com/user-attachments/assets/68761097-3bd8-4f94-bac2-123690e3919a)
 ![Screenshot (1702)](https://github.com/user-attachments/assets/6ec96cd3-d834-439f-9cb6-cb55418c6c82)
@@ -144,7 +144,7 @@ Make sure JDK installation set in Jenkins Tools
 ##  🌐 8. Access the Application
 
    Visit the deployed application at:
-     http://<VM-IP>:8080  
+     http://192.168.3.60:8080  
 ![Screenshot (21)](https://github.com/user-attachments/assets/990e347c-4b11-48f2-9f27-e342104a0b52)
 
      
