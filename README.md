@@ -138,7 +138,9 @@ Make sure JDK installation set in Jenkins Tools
     http://<your-vm-ip>:9100/metrics
 
 ![Screenshot (1700)](https://github.com/user-attachments/assets/68761097-3bd8-4f94-bac2-123690e3919a)
-    
+![Screenshot (1702)](https://github.com/user-attachments/assets/6ec96cd3-d834-439f-9cb6-cb55418c6c82)
+![Screenshot (1703)](https://github.com/user-attachments/assets/8e69ee2b-a3a5-496c-8939-2faa58786218)
+   
 ##  🌐 8. Access the Application
 
    Visit the deployed application at:
