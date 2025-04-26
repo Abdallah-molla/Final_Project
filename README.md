@@ -103,11 +103,11 @@ Make sure JDK installation set in Jenkins Tools
    Add targets to prometheus.yml:
 
     static_configs:
-     - targets: ['<VM-IP>:8080', 'localhost:9091']
-![Screenshot (34)](https://github.com/user-attachments/assets/a4415acc-58e3-44d9-a63d-cc1e27c98c04)
+     - targets: ['<VM-IP>:9100', 'localhost:9091']
+![Screenshot (1701)](https://github.com/user-attachments/assets/08f35584-7bb4-4ad7-910f-2ac53fb99664)
 
    Restart Prometheus and access it at: http://localhost:9091
-![Screenshot (36)](https://github.com/user-attachments/assets/9b813ebf-3f2b-43f6-b0f2-b055664d2b62)
+![Screenshot (1700)](https://github.com/user-attachments/assets/52f03c53-95e6-47f1-bebc-fdff2c89916e)
 
 ## 🚀 7. Run the CI/CD Pipeline
 
